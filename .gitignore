@@ -1,0 +1,9 @@
+node_modules/
+artifacts/
+cache/
+coverage/
+typechain-types/
+deployed.json
+
+# never commit secrets: RPC keys, private keys
+.env
