@@ -1,0 +1,138 @@
+/* Minimal, clean styling. No CSS framework on purpose: the app is small
+   and every class here is readable. */
+:root {
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --text: #1d2733;
+  --muted: #5b6b7c;
+  --border: #dfe6ee;
+  --primary: #1f6feb;
+  --primary-dark: #1a5fd0;
+  --ok-bg: #e8f7ee;
+  --ok-border: #34a853;
+  --ko-bg: #fdeaea;
+  --ko-border: #d93025;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+header h1 { margin: 0 0 0.25rem; font-size: 1.9rem; }
+header p { margin: 0 0 1.5rem; color: var(--muted); }
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 800px) {
+  main { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 1.4rem;
+}
+.card h2 { margin: 0 0 0.25rem; font-size: 1.2rem; }
+.hint { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
+
+form { display: flex; flex-direction: column; gap: 0.9rem; }
+label { display: flex; flex-direction: column; gap: 0.3rem; font-weight: 600; font-size: 0.9rem; }
+input, select {
+  font: inherit;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+}
+input:focus, select:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+button {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background: var(--primary-dark); }
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+button.secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--border);
+}
+
+.wallet-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.92rem;
+}
+.wallet-bar .dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--ok-border);
+}
+
+.hash-line {
+  font-size: 0.8rem;
+  color: var(--muted);
+  word-break: break-all;
+  margin: -0.3rem 0 0;
+}
+
+code {
+  background: #eef2f7;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+  word-break: break-all;
+}
+
+.verdict {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid;
+}
+.verdict.ok { background: var(--ok-bg); border-color: var(--ok-border); }
+.verdict.ko { background: var(--ko-bg); border-color: var(--ko-border); }
+
+.cert-details {
+  margin: 1rem 0 0;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+  font-size: 0.9rem;
+}
+.cert-details div { display: flex; gap: 0.6rem; margin-bottom: 0.35rem; }
+.cert-details dt { font-weight: 600; min-width: 90px; margin: 0; }
+.cert-details dd { margin: 0; }
+
+.success { color: #1e7e34; margin-top: 0.9rem; }
+.error-text { color: var(--ko-border); font-size: 0.88rem; margin-top: 0.6rem; word-break: break-word; }
+
+footer { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }

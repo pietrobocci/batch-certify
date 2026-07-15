@@ -1,0 +1,12 @@
+BATCH RECORD — DEMO DOCUMENT
+============================
+Batch ID:        LOT-2026-0042
+Product:         Demo Injectable 10ml
+Filling date:    2026-07-14
+Vials produced:  35
+QC outcome:      Released
+
+This file stands in for a real batch record. Its SHA-256 fingerprint is
+anchored on-chain by scripts/seed.js: upload this very file in the
+Verify panel (batch id LOT-2026-0042) and the check returns Authentic.
+Change even one character and it no longer will.
