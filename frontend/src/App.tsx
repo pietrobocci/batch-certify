@@ -1,6 +1,7 @@
 import { ConnectWallet } from "./components/ConnectWallet";
 import { IssueCertificate } from "./components/IssueCertificate";
 import { VerifyCertificate } from "./components/VerifyCertificate";
+import { CertificateHistory } from "./components/CertificateHistory";
 
 export default function App() {
   return (
@@ -19,6 +20,8 @@ export default function App() {
         <IssueCertificate />
         <VerifyCertificate />
       </main>
+
+      <CertificateHistory />
 
       <footer>
         <p>Local development build — contract on Hardhat chain 31337.</p>

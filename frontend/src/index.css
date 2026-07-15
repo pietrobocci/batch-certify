@@ -136,3 +136,21 @@ code {
 .error-text { color: var(--ko-border); font-size: 0.88rem; margin-top: 0.6rem; word-break: break-word; }
 
 footer { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
+
+/* history table */
+.history { margin-top: 1.25rem; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.03em; }
+tr.revoked td { opacity: 0.65; }
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid;
+}
+.badge.ok { background: var(--ok-bg); border-color: var(--ok-border); color: #1e7e34; }
+.badge.ko { background: var(--ko-bg); border-color: var(--ko-border); color: var(--ko-border); }

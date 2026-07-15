@@ -6,7 +6,8 @@
     "test": "hardhat test",
     "node": "hardhat node",
     "deploy": "hardhat run scripts/deploy.js --network localhost",
-    "seed": "hardhat run scripts/seed.js --network localhost"
+    "seed": "hardhat run scripts/seed.js --network localhost",
+    "revoke": "hardhat run scripts/revoke.js --network localhost"
   },
   "keywords": [],
   "author": "",
