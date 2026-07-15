@@ -10,12 +10,13 @@
 // the revert reason, including our custom errors.
 import { useState } from "react";
 import { useAccount, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
-import { contractAddress, contractAbi } from "../generated/contract";
+import { useContract } from "../lib/useContract";
 import { sha256File } from "../lib/hash";
 import { QcResult, QC_LABELS } from "../lib/qc";
 
 export function IssueCertificate() {
   const { isConnected } = useAccount();
+  const { address: contractAddress, abi: contractAbi } = useContract();
   const [batchId, setBatchId] = useState("");
   const [docHash, setDocHash] = useState<`0x${string}` | null>(null);
   const [fileName, setFileName] = useState("");
@@ -38,7 +39,7 @@ export function IssueCertificate() {
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!docHash) return;
+    if (!docHash || !contractAddress) return;
     writeContract({
       address: contractAddress,
       abi: contractAbi,

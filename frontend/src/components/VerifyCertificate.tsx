@@ -9,13 +9,14 @@
 //   getCertificate(batchId)   -> details for context (issuer, date, QC)
 import { useState } from "react";
 import { useReadContract } from "wagmi";
-import { contractAddress, contractAbi } from "../generated/contract";
+import { useContract } from "../lib/useContract";
 import { sha256File, isBytes32 } from "../lib/hash";
 import { QC_LABELS } from "../lib/qc";
 
 type Query = { batchId: string; docHash: `0x${string}` };
 
 export function VerifyCertificate() {
+  const { address: contractAddress, abi: contractAbi } = useContract();
   const [batchId, setBatchId] = useState("");
   const [hashInput, setHashInput] = useState("");
   const [fileName, setFileName] = useState("");

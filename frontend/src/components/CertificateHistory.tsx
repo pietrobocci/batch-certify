@@ -15,7 +15,7 @@
 //                           state juggling.
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { usePublicClient, useWatchContractEvent } from "wagmi";
-import { contractAddress, contractAbi } from "../generated/contract";
+import { useContract } from "../lib/useContract";
 import { QC_LABELS } from "../lib/qc";
 
 type Row = {
@@ -33,10 +33,12 @@ const HISTORY_KEY = ["certificate-history"];
 export function CertificateHistory() {
   const client = usePublicClient();
   const queryClient = useQueryClient();
+  const { chainId, address: contractAddress, abi: contractAbi } = useContract();
 
   const { data: rows, isLoading, error } = useQuery({
-    queryKey: HISTORY_KEY,
-    enabled: !!client,
+    // chainId in the cache key: each network keeps its own history
+    queryKey: [...HISTORY_KEY, chainId],
+    enabled: !!client && !!contractAddress,
     queryFn: async (): Promise<Row[]> => {
       // All logs since the beginning of the chain. On a public network
       // you would start from the contract's deployment block instead
@@ -106,6 +108,9 @@ export function CertificateHistory() {
         Revoked certificates stay visible, as they should.
       </p>
 
+      {!contractAddress && (
+        <p className="error-text">No deployment found for this network (chain {chainId}).</p>
+      )}
       {isLoading && <p className="hint">Loading events…</p>}
       {error && <p className="error-text">{(error as Error).message}</p>}
       {rows && rows.length === 0 && <p className="hint">No certificates issued yet.</p>}

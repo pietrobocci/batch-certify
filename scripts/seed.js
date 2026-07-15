@@ -19,10 +19,18 @@ const sha256 = (buf) => "0x" + crypto.createHash("sha256").update(buf).digest("h
 async function main() {
   await waitForNode(ethers.provider);
 
-  const { address } = JSON.parse(
+  // deployed.json maps chainId -> deployment (multichain, see deploy.js)
+  const chainId = Number((await ethers.provider.getNetwork()).chainId);
+  const deployments = JSON.parse(
     fs.readFileSync(path.join(__dirname, "..", "deployed.json"), "utf8")
   );
-  const contract = await ethers.getContractAt("BatchCertificate", address);
+  if (!deployments[chainId]) {
+    throw new Error(`No deployment for chainId ${chainId}: run the deploy first.`);
+  }
+  const contract = await ethers.getContractAt(
+    "BatchCertificate",
+    deployments[chainId].address
+  );
 
   const sampleFile = path.join(__dirname, "..", "docs", "sample-batch-record.txt");
   const sampleHash = sha256(fs.readFileSync(sampleFile));

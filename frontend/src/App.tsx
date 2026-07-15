@@ -1,6 +1,7 @@
 import { ConnectWallet } from "./components/ConnectWallet";
 import { IssueCertificate } from "./components/IssueCertificate";
 import { VerifyCertificate } from "./components/VerifyCertificate";
+import { RevokeCertificate } from "./components/RevokeCertificate";
 import { CertificateHistory } from "./components/CertificateHistory";
 
 export default function App() {
@@ -17,7 +18,10 @@ export default function App() {
       <ConnectWallet />
 
       <main>
-        <IssueCertificate />
+        <div className="stack">
+          <IssueCertificate />
+          <RevokeCertificate />
+        </div>
         <VerifyCertificate />
       </main>
 

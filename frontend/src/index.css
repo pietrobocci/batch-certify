@@ -137,6 +137,8 @@ code {
 
 footer { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
 
+.stack { display: flex; flex-direction: column; gap: 1.25rem; }
+
 /* history table */
 .history { margin-top: 1.25rem; }
 .table-wrap { overflow-x: auto; }
