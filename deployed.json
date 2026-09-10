@@ -1,0 +1,12 @@
+{
+  "31337": {
+    "network": "localhost",
+    "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "deployedAt": "2026-07-15T10:11:39.296Z"
+  },
+  "11155111": {
+    "network": "sepolia",
+    "address": "0xDB279CA2f681649121C1f3E31D1cbfF6892CB095",
+    "deployedAt": "2026-09-10T12:00:50.159Z"
+  }
+}

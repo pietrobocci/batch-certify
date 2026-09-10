@@ -14,6 +14,23 @@ history.
 
 ![Batch Certify — issue, revoke, verify and the event-driven history](docs/app.png)
 
+## Live on Sepolia
+
+The contract is deployed and source-verified on Ethereum's Sepolia testnet:
+
+**[`0xDB279CA2f681649121C1f3E31D1cbfF6892CB095`](https://sepolia.etherscan.io/address/0xDB279CA2f681649121C1f3E31D1cbfF6892CB095#code)**
+
+Two demo certificates are already issued: `LOT-2026-0042` (Released) and
+`LOT-2026-0007` (Rejected, then revoked — revocation keeps the record visible,
+as an audit trail should).
+
+**You can check it without a wallet and without installing anything.** Download
+[`docs/sample-batch-record.txt`](docs/sample-batch-record.txt), open the Verify
+panel with batch id `LOT-2026-0042` and drop the file in: it returns *Authentic*.
+Change a single character and it returns *Tampered* — the fingerprint no longer
+matches what was anchored on-chain. Verification is a read-only call, which is
+why no wallet is needed; issuing and revoking do need one.
+
 > **Context.** Built as a personal project by an automation engineer
 > working on GMP pharmaceutical filling lines: the design mirrors how
 > batch records and QC decisions actually work (ALCOA+ data integrity,
