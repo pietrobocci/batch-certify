@@ -13,3 +13,7 @@ typechain-types/
 # frontend/src/generated/ is committed for the same reason: a build from a
 # fresh clone must know the Sepolia address, otherwise the public demo has no
 # contract to talk to.
+
+# graphify: grafo locale e configurazione dell'assistente, non fanno parte del progetto
+/graphify-out/
+/.claude/
